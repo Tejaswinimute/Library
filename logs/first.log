@@ -13,3 +13,5 @@
 [2021-05-17 23:02:53] INFO <QueryDict: {'csrfmiddlewaretoken': ['S3gQ3Q8TBsOMyBf02gwvZqY4IH5cjys1Ove5hcr1wdfj9FqaO3sZA6LrkyK9z1cG'], 'name': ['hj'], 'author': ['vj'], 'qty': ['5'], 'price': ['7']}>
 [2021-05-17 23:02:53] INFO In homepage View
 [2021-05-17 23:02:53] INFO <QuerySet [<Book: The Heirs>, <Book: Boss>, <Book: Infow>, <Book: ZZ>, <Book: AA>, <Book: HH>, <Book: JJ>, <Book: GG>, <Book: PP>, <Book: FF>, <Book: WW>, <Book: VV>, <Book: RR>, <Book: FF>, <Book: II>, <Book: BB>, <Book: UU>, <Book: XX>, <Book: OO>, <Book: YY>, '...(remaining elements truncated)...']>
+[2021-05-19 14:50:15] INFO In homepage View
+[2021-05-19 14:50:15] INFO <QuerySet [<Book: The Heirs>, <Book: Boss>, <Book: Infow>, <Book: ZZ>, <Book: AA>, <Book: HH>, <Book: JJ>, <Book: GG>, <Book: PP>, <Book: FF>, <Book: WW>, <Book: VV>, <Book: RR>, <Book: FF>, <Book: II>, <Book: BB>, <Book: UU>, <Book: XX>, <Book: OO>, <Book: YY>, '...(remaining elements truncated)...']>
