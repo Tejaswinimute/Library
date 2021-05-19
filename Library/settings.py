@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Book',
+    'book2',
 ]
 
 MIDDLEWARE = [
@@ -124,3 +125,64 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+import os
+import time
+date = time.strftime("%S")
+# date = str(time.time()).split('.')[1][3:]
+rotate = 'rotate'+ date
+file_name = "E:\\Django_New\\Library\\logs\\"+ rotate
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'formatter1': {
+            'format': '[%(asctime)s] %(levelname)s %(message)s',
+            'datefmt': '%Y-%m-%d %H:%M:%S'
+        },
+        'formatter2': {
+            'format': '[%(asctime)s] %(levelname)s %(message)s',
+            'datefmt': '%d-%b-%Y %I:%M:%S %p'
+        },
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'level': 'DEBUG',
+        },
+        'file': {
+            'class': 'logging.FileHandler',
+            'level': 'DEBUG',
+            'filename': "E:\\Django_New\\Library\\logs\\first.log",
+            'formatter': 'formatter1',
+        },
+        's_file': {
+            'class': 'logging.FileHandler',
+            'level': 'DEBUG',
+            'filename': 'E:\\Django_New\\Library\\logs\\second.second.log',
+            'formatter': 'formatter2',
+        },
+        'timed_rotate': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'filename': file_name,
+            'when' : 'S',
+            'interval' : 1,
+            'backupCount' : 10,
+            'formatter': 'formatter2'
+        },
+    },    
+    'loggers': {
+        'first': {  
+            'handlers': ['console','file'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
+            'propagate': False,
+        },
+        'second': {  
+            'handlers': ['s_file','timed_rotate'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
+            'propagate': False,
+        },
+    },
+}

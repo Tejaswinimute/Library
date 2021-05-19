@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from Book import views
+from book2 import views as second_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,4 +29,7 @@ urlpatterns = [
     path('restore/<int:id>/',views.restore),
     path('delete_all/',views.delete_all),
     path('restore_all/',views.restore_all),
+
+    #second app
+    path('second',second_views.home),
 ]

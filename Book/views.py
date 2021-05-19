@@ -1,13 +1,18 @@
 from django.shortcuts import render, redirect
 from Book.models import Book
 from django.http import HttpResponse
+import logging
+logger = logging.getLogger('first')
 
 # Create your views here.
 def homepage(request):
-    all_book = Book.active_objects.all()     
+    logger.info("In homepage View")
+    all_book = Book.active_objects.all()
+    logger.info(all_book)     
     return render(request,template_name='home.html',context={"books": all_book})
 
 def save_book(request):
+    logger.info(request.POST)
     b_name = request.POST.get("name")
     b_author = request.POST.get("author")
     b_price = request.POST.get("price")
@@ -19,7 +24,10 @@ def save_book(request):
         flag = False
     
     if request.POST.get('id'):
-        book_obj = Book.objects.get(id=request.POST.get('id'))
+        try:
+            book_obj = Book.objects.get(id=request.POST.get('id'))
+        except Exception as msg:
+            logger.error(f"{msg} -- in exception")
         book_obj.name = b_name
         book_obj.author = b_author
         book_obj.qty = b_qty
